@@ -1,0 +1,22 @@
+
+apiVersion: apps/v1beta1 # for versions before 1.7.0 use apps/v1beta1
+kind: Deployment
+metadata:
+  name: scribbles-test
+  labels:
+    app: scribbles
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scribbles
+  template:
+    metadata:
+      labels:
+        app: scribbles
+    spec:
+      containers:
+      - name: scribbles
+        image: gcr.io/senior-project-proving-grounds/scribbles
+        ports:
+        - containerPort: 8080
